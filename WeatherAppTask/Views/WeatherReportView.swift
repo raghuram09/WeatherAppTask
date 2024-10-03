@@ -25,14 +25,12 @@ struct WeatherReportView: View {
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .clipped()
                 .ignoresSafeArea()
-            
             GeometryReader { geometry in
                 ScrollView {
                     VStack {
                         SearchBar(text: $citySearchText,
                                   placeHolder: "Search by City", viewModel: viewModel)
                         .padding(.top, 40)
-                        
                         if viewModel.weatherDetails?.name != nil {
                             WeatherReportDisplayView(viewModel: viewModel)
                         } else {
@@ -43,11 +41,9 @@ struct WeatherReportView: View {
                         }
                         Spacer()
                     }
-                    //Size classes
-                    .padding(horizontalSizeClass == .compact ? 20 : 40)
-                    .frame(width: horizontalSizeClass == .compact ? geometry.size.width : geometry.size.width * 0.8)
-                    .frame(maxHeight: verticalSizeClass == .regular ? geometry.size.height : geometry.size.height * 0.7)
                 }
+                .padding(horizontalSizeClass == .compact ? 20 : 40)
+                .frame(width: horizontalSizeClass == .compact ? geometry.size.width : geometry.size.width * 0.8)
             }
         }
         .padding()
